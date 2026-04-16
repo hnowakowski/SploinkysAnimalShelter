@@ -17,14 +17,9 @@ namespace SploinkyAPI.Controllers
         [HttpGet(Name = "GetAnimals")]
         public IEnumerable<Animal> Get()
         {
-            List<Animal> animals = new List<Animal>();
-            string[] names = { "splinky", "dinky", "molly", "stinky", "pimpinky" };
-            int[] tests = { 7, 8, 5, 4, 2 };
-            for (int i = 0; i < tests.Length; i++)
-            {
-                animals.Add(new Cat(i, names[i], tests[i]));
-            }
-            return animals.ToArray();
+            return null;
         }
+
+
     }
 }

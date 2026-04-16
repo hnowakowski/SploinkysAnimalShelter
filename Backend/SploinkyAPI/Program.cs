@@ -1,3 +1,5 @@
+using MySql.Data.MySqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +17,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// MySQL setup (temporary just to check if it works)
+var dbConnectionStr = builder.Configuration.GetValue<string>("dbstring");
+var connection = new MySqlConnection(dbConnectionStr);
+await connection.OpenAsync();
+var command = new MySqlCommand("SELECT * FROM cat;", connection);
+var reader = await command.ExecuteReaderAsync();
+
+while (await reader.ReadAsync())
+{
+    Console.WriteLine(Convert.ToString(reader["id"]) + reader["name"], reader["color"]);
+}
+
 
 app.UseHttpsRedirection();
 

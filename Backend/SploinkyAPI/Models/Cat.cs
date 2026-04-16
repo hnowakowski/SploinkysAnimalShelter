@@ -2,8 +2,9 @@
 {
     public class Cat : Animal
     {
-        public int Test {  get; set; }
-        public Cat(int Id, string Name, int Test) { this.Id = Id; this.Name = Name; this.Test = Test; }
+        public int CatTest {  get; set; } // for differenciating this type
+        public Cat(int Id, string Name, AnimalColor Color, string PicturePath, int Test) 
+        { this.Id = Id; this.Name = Name; this.Color = Color; this.PicturePath = PicturePath; this.CatTest = Test; }
 
     }
 }
