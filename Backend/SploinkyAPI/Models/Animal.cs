@@ -5,14 +5,16 @@ namespace SploinkyAPI.Models
 {
     [JsonPolymorphic]
     [JsonDerivedType(typeof(Cat))] // <-- needed so that polymorphism actually works in the api responses
-    public abstract class Animal
+    [JsonDerivedType(typeof(Dog))]
+    public abstract class Animal : IPurchasable, IDbItem<Animal>
     {
         [NotNull]
         public int Id { get; protected set; }
         [NotNull]
         public string Name { get; protected set; } = String.Empty;
-        [NotNull]
-        public AnimalColor Color { get; protected set; }
         public string PicturePath { get; protected set; } = String.Empty;
+
+        public abstract int Purchase(User user);
+        public abstract IDbItem<Animal> LoadFromDb(int Id);
     }
 }

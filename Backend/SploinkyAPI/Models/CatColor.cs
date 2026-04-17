@@ -1,6 +1,6 @@
 ﻿namespace SploinkyAPI.Models
 {
-    public enum AnimalColor
+    public enum CatColor
     {
         GRAY,
         ORANGE,
